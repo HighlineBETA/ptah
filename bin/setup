@@ -66,6 +66,16 @@ function run_custom_setup() {
   fi
 }
 
+install_js () {
+  if [[ -x $(command -v asdf) ]]; then
+    asdf plugin-add nodejs
+    bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+    asdf install nodejs 8.12.0
+  else
+    echo 'Could not install JS as ASDF is not installed.'
+  fi
+}
+
 if [[ -d "$HOME/.dotfiles" ]]; then
   echo "Setting up your machine...\n"
   # Ask for the administrator password upfront
