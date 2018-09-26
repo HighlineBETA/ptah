@@ -12,8 +12,6 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 source $ZDOTDIR/aliases
 
-[[ -d $HOME/.cargo/bin ]] && export PATH=$HOME/.cargo/bin:$PATH
-
 setopt dvorak
 setopt noclobber
 setopt autopushd pushdminus pushdsilent pushdtohome
@@ -37,9 +35,7 @@ setopt c_bases
 
 export WORDCHARS="${WORDCHARS//\/}"
 export EDITOR="vscode"
-export ERL_AFLAGS="-kernel shell_history enabled"
-export PURE_PROMPT_SYMBOL="|>"
-export GPG_TTY=$(tty)
+export PURE_PROMPT_SYMBOL=☥
 
 fzf-loc-widget() {
   local selected
