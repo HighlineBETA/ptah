@@ -1,9 +1,7 @@
+*.zwc
 .*.sw[op]
 .*.un~
-*.zwc
-vim/.netrwhist
-zsh/.zcalc_history
-zsh/.zcompdump
+.var/zsh/history-*
 config/configstore
 config/direnv
 config/dotenv/allow
@@ -12,5 +10,7 @@ config/htop
 config/hub
 config/keybase
 config/yarn
-.var/zsh/history-*
+vim/.netrwhist
+zsh/.zcalc_history
+zsh/.zcompdump
 zsh/zshrc.local

@@ -12,6 +12,8 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 source $ZDOTDIR/aliases
 
+[[ -d $HOME/.cargo/bin ]] && export PATH=$HOME/.cargo/bin:$PATH
+
 setopt dvorak
 setopt noclobber
 setopt autopushd pushdminus pushdsilent pushdtohome
