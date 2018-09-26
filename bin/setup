@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ -d "$HOME/.dotfiles" ]]; then
+  $HOME/.dotfiles/bin/link-dotfiles.sh
+  $HOME/.dotfiles/bin/setup-vscode
+else
+  echo "Dotfiles don't seem to be correctly set up."
+  echo "Ensure you've cloned github.com/HighlineBETA/ptah into $HOME/.dotfiles."
+fi

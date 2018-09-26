@@ -1,0 +1,13 @@
+.*.sw[op]
+.*.un~
+*.zwc
+vim/.netrwhist
+zsh/.zcalc_history
+zsh/.zcompdump
+config/keybase
+config/hub
+config/htop
+config/google-chrome
+config/dotenv/allow
+config/configstore
+.var/zsh/history-*

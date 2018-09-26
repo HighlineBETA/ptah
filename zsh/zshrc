@@ -1,0 +1,52 @@
+bindkey -e
+
+export ZVARDIR=~/var
+
+source <(antibody init)
+antibody bundle < $ZDOTDIR/plugins
+
+# Base 16 colour schemes {{{
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+# }}}
+
+source $ZDOTDIR/aliases
+
+[[ -d $HOME/.cargo/bin ]] && export PATH=$HOME/.cargo/bin:$PATH
+
+setopt dvorak
+setopt noclobber
+setopt autopushd pushdminus pushdsilent pushdtohome
+
+setopt braceccl
+
+setopt notify
+setopt no_bgnice
+setopt nohup
+setopt checkjobs
+
+setopt bsd_echo
+
+setopt nullglob
+setopt extended_glob
+setopt no_nomatch
+
+setopt no_beep
+
+setopt c_bases
+
+export WORDCHARS="${WORDCHARS//\/}"
+export EDITOR="vscode"
+export ERL_AFLAGS="-kernel shell_history enabled"
+export PURE_PROMPT_SYMBOL="|>"
+export GPG_TTY=$(tty)
+
+fzf-loc-widget() {
+  local selected
+  if selected=$(loc "$LBUFFER"); then
+    LBUFFER=$selected
+  fi
+  zle redisplay
+}
+zle     -N    fzf-loc-widget
+bindkey '\eL' fzf-loc-widget
