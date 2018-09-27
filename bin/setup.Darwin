@@ -1,8 +1,5 @@
-#!/bin/zsh
+#!/bin/zsh -e -u
 setopt extendedglob
-
-set -o errexit
-set -o nounset
 
 setup_homebrew() {
   echo "Installing Homebrew"
