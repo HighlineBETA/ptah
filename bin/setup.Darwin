@@ -1,7 +1,9 @@
-#!/bin/zsh -e -u
+#!/usr/bin/env zsh -e -u
 setopt extendedglob
+set -o errexit
+set -o nounset
 
-function setup_homebrew() {
+setup_homebrew() {
   echo "Installing Homebrew"
   command -v brew > /dev/null 2&>1 || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew tap Homebrew/bundle
@@ -9,7 +11,7 @@ function setup_homebrew() {
   [[ -e utils/Brewfile.mac ]] && brew bundle --file=utils/Brewfile.mac
 }
 
-function configure_sane_defaults() {
+configure_sane_defaults() {
   # Close any open System Preferences panes, to prevent them from overriding
   # settings we’re about to change
   osascript -e 'tell application "System Preferences" to quit'
@@ -45,7 +47,7 @@ function configure_sane_defaults() {
   defaults write com.apple.dock autohide -bool true
 }
 
-function configure_spotlight() {
+ configure_spotlight() {
   # Change indexing order and disable some search results
   # Yosemite-specific search results (remove them if you are using macOS 10.9 or older):
   # 	MENU_DEFINITION
@@ -126,7 +128,7 @@ EOD
   [[ -e "$HOME/.dotfiles/utils/dracula-iterm-theme" ]] && open $HOME/.dotfiles/utils/dracula-iterm-theme/Dracula.itermcolors
 }
 
-function configure_activity_monitor(){
+configure_activity_monitor(){
   # Show the main window when launching Activity Monitor
   defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
   # Visualize CPU usage in the Activity Monitor Dock icon
