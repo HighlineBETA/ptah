@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+# Don't run this as root
+if [ ${UID} -eq 0 ]; then
+  echo "This should be run as your normal user, not as root"
+  exit 1
+fi
+
+# Check permissions
+for file in $(find ~/.dotfiles ! -uid ${UID}); do
+  echo "${file} has incorrect ownership"
+  permissions=error
+done
+if [ $permissions ]; then
+  exit 2
+fi
+
+echo "Everything seems fine here. You're good to go!"
